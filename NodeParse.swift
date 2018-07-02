@@ -16,8 +16,6 @@ class CompanyMeals : NSObject {
     var MealActive: Int64 = 0
     var MealCaloryArray = [Double] ()
     var MealCarbArray = [Double] ()
-    var MealCompanyCategory: String?
-    var MealCompanyEmail: String?
     var MealCompanyID: Int64 = 0
     var MealCompanyName: String?
     var MealDateTime: String?
@@ -35,13 +33,11 @@ class CompanyMeals : NSObject {
     var MealTotalProtein: Int64 = 0
     let ref: FIRDatabaseReference?
     
-    init (MealActive: Int64, MealCaloryArray: [Double], MealCarbArray: [Double], MealCompanyCategory: String, MealCompanyEmail: String, MealCompanyID: Int64, MealCompanyName: String, MealDateTime: String, MealEditableStatus: Int64, MealFatArray: [Double], MealID: Int64, MealIngredientArray: [String], MealIngredientName: String, MealName: String, MealProteinArray: [Double], MealQuantityArray: [String], MealTotalCalory: Int64, MealTotalCarbs: Int64, MealTotalFat: Int64, MealTotalProtein: Int64) {
+    init (MealActive: Int64, MealCaloryArray: [Double], MealCarbArray: [Double], MealCompanyID: Int64, MealCompanyName: String, MealDateTime: String, MealEditableStatus: Int64, MealFatArray: [Double], MealID: Int64, MealIngredientArray: [String], MealIngredientName: String, MealName: String, MealProteinArray: [Double], MealQuantityArray: [String], MealTotalCalory: Int64, MealTotalCarbs: Int64, MealTotalFat: Int64, MealTotalProtein: Int64) {
         
             self.MealActive = MealActive
             self.MealCaloryArray = MealCaloryArray
             self.MealCarbArray = MealCarbArray
-            self.MealCompanyCategory = MealCompanyCategory
-            self.MealCompanyEmail = MealCompanyEmail
             self.MealCompanyID = MealCompanyID
             self.MealCompanyName = MealCompanyName
             self.MealDateTime = MealDateTime
@@ -72,14 +68,6 @@ class CompanyMeals : NSObject {
         
         if let MealCarbArray1 = (snapshot.value! as? NSDictionary)?["MealCarbArray"] as? [Double] {
             MealCarbArray = MealCarbArray1
-        }
-        
-        if let MealCompanyCategory1 = (snapshot.value! as? NSDictionary)?["MealCompanyCategory"] as? String {
-            MealCompanyCategory = MealCompanyCategory1
-        }
-      
-        if let MealCompanyEmail1 = (snapshot.value! as? NSDictionary)?["MealCompanyEmail"] as? String {
-            MealCompanyEmail = MealCompanyEmail1
         }
         
         if let MealCompanyID1 = (snapshot.value! as? NSDictionary)?["MealCompanyID"] as? Int64 {
@@ -154,8 +142,6 @@ class CompanyMeals : NSObject {
         compMeal["MealActive"] = self.MealActive as AnyObject?
         compMeal["MealCaloryArray"] = self.MealCaloryArray as AnyObject?
         compMeal["MealCarbArray"] = self.MealCarbArray as AnyObject?
-        compMeal["MealCompanyCategory"] = self.MealCompanyCategory as AnyObject?
-        compMeal["MealCompanyEmail"] = self.MealCompanyEmail as AnyObject?
         compMeal["MealCompanyID"] = self.MealCompanyID as AnyObject?
         compMeal["MealCompanyName"] = self.MealCompanyName as AnyObject?
         compMeal["MealDateTime"] = self.MealDateTime as AnyObject?
@@ -177,7 +163,7 @@ class CompanyMeals : NSObject {
     
     convenience override init() {
         
-        self.init (MealActive: 0, MealCaloryArray: [] , MealCarbArray: [], MealCompanyCategory: "", MealCompanyEmail: "", MealCompanyID: 0, MealCompanyName: "", MealDateTime: "", MealEditableStatus: 0, MealFatArray: [], MealID: 0, MealIngredientArray: [], MealIngredientName: "", MealName: "", MealProteinArray: [], MealQuantityArray: [], MealTotalCalory: 0, MealTotalCarbs: 0, MealTotalFat: 0, MealTotalProtein: 0)
+        self.init (MealActive: 0, MealCaloryArray: [] , MealCarbArray: [], MealCompanyID: 0, MealCompanyName: "", MealDateTime: "", MealEditableStatus: 0, MealFatArray: [], MealID: 0, MealIngredientArray: [], MealIngredientName: "", MealName: "", MealProteinArray: [], MealQuantityArray: [], MealTotalCalory: 0, MealTotalCarbs: 0, MealTotalFat: 0, MealTotalProtein: 0)
     }
 
 }
